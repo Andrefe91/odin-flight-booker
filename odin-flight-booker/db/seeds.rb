@@ -7,3 +7,19 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+def random_three
+  result = []
+  3.times do
+    result << [*('A'..'Z')].sample
+  end
+  result
+end
+
+def destinations(number)
+  total_destinations = []
+  number.times do
+    total_destinations << random_three
+  end
+  total_destinations.uniq
+end
