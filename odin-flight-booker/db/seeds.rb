@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+Airport.destroy_all
+
 def random_three
   result = []
   3.times do
@@ -23,3 +25,16 @@ def destinations(number)
   end
   total_destinations.uniq
 end
+
+def seed_database(number)
+  airports = destinations(number)
+
+  airports.each do |airport|
+    Airport.create(name_code: airport.join)
+  end
+end
+
+
+puts "Seeding the database with 20 records..."
+seed_database(20)
+puts "Seeding completed successfully"
