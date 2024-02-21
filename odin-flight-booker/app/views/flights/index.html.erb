@@ -1,2 +1,15 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<div>
+    <h3>Search for your flight: </h3>
+</div>
+
+<%= form_with url: "/flights", method: :get do |form| %>
+    <div>
+        <%= select_tag(:departure_airport_id, options_for_select(@airports_options, @selected_departure_airport_id)) %>
+        <%= select_tag(:arrival_airport_id, options_for_select(@airports_options, @selected_arrival_airport_id)) %>
+        <%= select_tag(:passangers_number, options_for_select([[1,1],[2,2],[3,3],[4,4]], @selected_passangers_number)) %>
+        <%= select_tag(:flight_id, options_for_select(@flight_dates, @selected_date)) %>
+    </div>
+    <br>
+    <%= form.submit "Search Flight" %>
+<% end %>
+

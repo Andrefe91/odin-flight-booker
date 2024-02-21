@@ -43,5 +43,5 @@ end
 
 puts "Seeding the flights and airports databases..."
 seed_airports(20)
-seed_flights(20, 500)
+seed_flights(20, 1500)
 puts "Seeding completed successfully"
