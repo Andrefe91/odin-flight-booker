@@ -26,7 +26,7 @@ def destinations(number)
   total_destinations.uniq
 end
 
-def seed_database(number)
+def seed_airports(number)
   airports = destinations(number)
 
   airports.each do |airport|
@@ -34,7 +34,14 @@ def seed_database(number)
   end
 end
 
+def seed_flights(airports, flights)
+  flights.times do
+    Flight.create(departure_airport_id: rand(airports), arrival_airport_id: rand(airports), duration: rand(420),
+    date: (Date.today + rand(60)))
+  end
+end
 
-puts "Seeding the database with 20 records..."
-seed_database(20)
+puts "Seeding the flights and airports databases..."
+seed_airports(20)
+seed_flights(20, 500)
 puts "Seeding completed successfully"
