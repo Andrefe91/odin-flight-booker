@@ -17,7 +17,7 @@
 <div>
     <h3>Flights: </h3>
 
-    <%= form_with model: @flights, url: new_flight_path do |form| %>
+    <%= form_with model: @bookings, url: new_booking_path, method: :get do |form| %>
         <div>
             <%= form.collection_radio_buttons :flight, @flight_options_sql, :id,
             :flight_text do |b| %>
@@ -29,7 +29,7 @@
         </div>
         <br>
 
-        <%= form.hidden_field @selected_passangers_number %>
+        <%= form.hidden_field :passangers_number, value: @selected_passangers_number %>
         <%= form.submit "Select Flight" %>
     <% end %>
 </div>

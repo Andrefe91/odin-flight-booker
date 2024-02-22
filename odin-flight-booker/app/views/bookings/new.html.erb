@@ -1,2 +1,21 @@
-<h1>Bookings#new</h1>
-<p>Find me in app/views/bookings/new.html.erb</p>
+<h1>Awesome Airline !</h1>
+<h2>Flight Booking</h2>
+
+
+
+<div>
+    <p>Booked Flight: #<%= @booked_flight_number %></p>
+    <p>Flight Duration: <%= @booked_flight.duration %> min</p>
+    <p>From Airport: <%= Airport.find(@booked_flight.departure_airport_id).name_code %></p>
+    <p>From Airport: <%= Airport.find(@booked_flight.arrival_airport_id).name_code %></p>
+    <p>Number of Passangers: <%= @passangers_number %></p>
+    <p>Date of Flight: <%= @booked_flight.date %></p>
+</div>
+
+<div>
+    <h3>
+        Passenger Information:
+    </h3>
+</div>
+
+<%= link_to "[Back]", root_path %>

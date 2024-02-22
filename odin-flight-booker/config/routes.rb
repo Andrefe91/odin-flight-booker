@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'bookings/index'
-  get 'bookings/new'
-  get 'bookings/create'
-  get 'passengers/index'
-  get 'passengers/new'
-  get 'passengers/create'
+  # get 'bookings/index'
+  # get 'bookings/new'
+  # get 'bookings/create'
+  # get 'passengers/index'
+  # get 'passengers/new'
+  # get 'passengers/create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
+  resources :bookings, only: [:index, :new, :create]
+  resources :passengers, only: [:index, :new, :create]
   resources :flights, only: [:new]
 end
