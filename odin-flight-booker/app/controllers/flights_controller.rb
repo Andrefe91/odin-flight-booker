@@ -14,6 +14,6 @@ class FlightsController < ApplicationController
   end
 
   def new
-    
+    @flight = Flight.new()
   end
 end
