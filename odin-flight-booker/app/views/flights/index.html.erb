@@ -7,9 +7,30 @@
         <%= select_tag(:departure_airport_id, options_for_select(@airports_options, @selected_departure_airport_id)) %>
         <%= select_tag(:arrival_airport_id, options_for_select(@airports_options, @selected_arrival_airport_id)) %>
         <%= select_tag(:passangers_number, options_for_select([[1,1],[2,2],[3,3],[4,4]], @selected_passangers_number)) %>
-        <%= select_tag(:flight_id, options_for_select(@flight_dates, @selected_date)) %>
+        <%= select_tag(:date, options_for_select(@flight_dates, @selected_date)) %>
+        <%= hidden_field_tag 'test', Time.now %>
     </div>
     <br>
     <%= form.submit "Search Flight" %>
 <% end %>
+
+<div>
+    <h3>Flights: </h3>
+
+    <%= form_with model: @flights, url: new_flight_path do |form| %>
+        <div>
+            <%= form.collection_radio_buttons :flight, @flight_options_sql, :id,
+            :flight_text do |b| %>
+                <div>
+                    <%= b.radio_button %>
+                    <%= b.label %>
+                </div>
+            <% end %>
+        </div>
+        <br>
+
+        <%= form.hidden_field @selected_passangers_number %>
+        <%= form.submit "Select Flight" %>
+    <% end %>
+</div>
 
