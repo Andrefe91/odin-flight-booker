@@ -5,7 +5,7 @@ class FlightsController < ApplicationController
 
     @selected_departure_airport_id = params[:departure_airport_id]
     @selected_arrival_airport_id = params[:arrival_airport_id]
-    @selected_passangers_number = params[:passangers_number]
+    @selected_passengers_number = params[:passengers_number]
     @selected_date = params[:date]
 
     @flight_options_sql = Flight.where("departure_airport_id = ? AND arrival_airport_id = ? AND date > ?",

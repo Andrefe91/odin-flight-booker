@@ -6,7 +6,7 @@
     <div>
         <%= select_tag(:departure_airport_id, options_for_select(@airports_options, @selected_departure_airport_id)) %>
         <%= select_tag(:arrival_airport_id, options_for_select(@airports_options, @selected_arrival_airport_id)) %>
-        <%= select_tag(:passangers_number, options_for_select([[1,1],[2,2],[3,3],[4,4]], @selected_passangers_number)) %>
+        <%= select_tag(:passengers_number, options_for_select([[1,1],[2,2],[3,3],[4,4]], @selected_passengers_number)) %>
         <%= select_tag(:date, options_for_select(@flight_dates, @selected_date)) %>
         <%= hidden_field_tag 'test', Time.now %>
     </div>
@@ -29,7 +29,7 @@
         </div>
         <br>
 
-        <%= form.hidden_field :passangers_number, value: @selected_passangers_number %>
+        <%= form.hidden_field :passengers_number, value: @selected_passengers_number %>
         <%= form.submit "Select Flight" %>
     <% end %>
 </div>

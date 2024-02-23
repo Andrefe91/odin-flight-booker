@@ -19,22 +19,26 @@
 </div>
 
 <div>
-    <%= form_with model: @passengers do |form| %>
+    <%= form_with model: @booking do |form| %>
+        Testing:
+        <%= @passengers_number %>
         <ul>
             <%= form.fields_for :passengers do |passenger_form| %>
                 <li>
+                    <div>Passenger: </div>
                     <%= passenger_form.label :name %>
                     <%= passenger_form.text_field :name %>
 
                     <%= passenger_form.label :email %>
                     <%= form.email_field :email %>
                 </li>
+                <br>
             <% end %>
         </ul>
 
+        <%= form.submit %>
     <% end %>
-
 </div>
 
-
+<br>
 <%= link_to "[Back]", root_path %>
