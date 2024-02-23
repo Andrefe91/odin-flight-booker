@@ -8,7 +8,7 @@
     <p>Flight Duration: <%= @booked_flight.duration %> min</p>
     <p>From Airport: <%= Airport.find(@booked_flight.departure_airport_id).name_code %></p>
     <p>From Airport: <%= Airport.find(@booked_flight.arrival_airport_id).name_code %></p>
-    <p>Number of Passangers: <%= @passangers_number %></p>
+    <p>Number of Passengers: <%= @passengers_number %></p>
     <p>Date of Flight: <%= @booked_flight.date %></p>
 </div>
 
@@ -17,5 +17,24 @@
         Passenger Information:
     </h3>
 </div>
+
+<div>
+    <%= form_with model: @passengers do |form| %>
+        <ul>
+            <%= form.fields_for :passengers do |passenger_form| %>
+                <li>
+                    <%= passenger_form.label :name %>
+                    <%= passenger_form.text_field :name %>
+
+                    <%= passenger_form.label :email %>
+                    <%= form.email_field :email %>
+                </li>
+            <% end %>
+        </ul>
+
+    <% end %>
+
+</div>
+
 
 <%= link_to "[Back]", root_path %>
