@@ -19,20 +19,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_144252) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "flight_id", null: false
-    t.integer "passenger_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
-    t.index ["passenger_id"], name: "index_bookings_on_passenger_id"
   end
 
   create_table "flights", force: :cascade do |t|
     t.date "date"
-    t.integer "duration"
-    t.integer "departure_airport_id"
-    t.integer "arrival_airport_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "departure_airport_id"
+    t.integer "arrival_airport_id"
+    t.integer "duration"
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
     t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end
@@ -40,12 +38,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_144252) do
   create_table "passengers", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.integer "booking_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_passengers_on_booking_id"
   end
 
   add_foreign_key "bookings", "flights"
-  add_foreign_key "bookings", "passengers"
   add_foreign_key "flights", "airports", column: "arrival_airport_id"
   add_foreign_key "flights", "airports", column: "departure_airport_id"
+  add_foreign_key "passengers", "bookings"
 end
