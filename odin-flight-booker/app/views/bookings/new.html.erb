@@ -20,17 +20,17 @@
 
 <div>
     <%= form_with model: @booking do |form| %>
-        Testing:
-        <%= @passengers_number %>
+        <%= form.hidden_field :flight_id, value: @booked_flight_number %>
         <ul>
             <%= form.fields_for :passengers do |passenger_form| %>
                 <li>
                     <div>Passenger: </div>
+                    <br>
                     <%= passenger_form.label :name %>
                     <%= passenger_form.text_field :name %>
 
                     <%= passenger_form.label :email %>
-                    <%= form.email_field :email %>
+                    <%= passenger_form.email_field :email %>
                 </li>
                 <br>
             <% end %>
@@ -41,4 +41,11 @@
 </div>
 
 <br>
-<%= link_to "[Back]", root_path %>
+<% flash.each do |type, msg| %>
+    <div>
+        <%= msg %>
+    </div>
+<% end %>
+<br>
+
+<%= link_to "[Home Page]", root_path %>

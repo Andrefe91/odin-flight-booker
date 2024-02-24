@@ -3,6 +3,12 @@ class BookingsController < ApplicationController
   def index
   end
 
+  def show
+    @booking = Booking.find(params[:id])
+    @passengers = @booking.passengers
+    @flight = Flight.find(@booking.flight_id)
+  end
+
   def new
     @booked_flight = Flight.find(@booked_flight_number)
     @booking = Booking.new
@@ -11,7 +17,13 @@ class BookingsController < ApplicationController
   end
 
   def create
+    @booking = Booking.new(passengers_params)
 
+    if @booking.save
+      redirect_to booking_path(@booking)
+    else
+      flash.now[:notice] = "Error creating booking"
+    end
   end
 
 
@@ -26,7 +38,11 @@ class BookingsController < ApplicationController
   end
 
   def passengers_params
-    params.require(:booking).permit(passengers_attributes: [])
+    params.require(:booking).permit(:flight_id, passengers_attributes: [:id, :name, :email])
+  end
+
+  def booking_permited_params
+    params.require(:params).permit(:id)
   end
 
 end
