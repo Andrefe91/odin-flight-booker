@@ -7,6 +7,11 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @passengers = @booking.passengers
     @flight = Flight.find(@booking.flight_id)
+
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render :json => @flight }
+    end
   end
 
   def new
