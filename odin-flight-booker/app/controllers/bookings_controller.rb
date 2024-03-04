@@ -23,6 +23,7 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(passengers_params)
+    @booking.origin = Airport.find()
 
     if @booking.save
       redirect_to booking_path(@booking)
