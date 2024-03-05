@@ -23,7 +23,11 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(passengers_params)
-    @booking.origin = Airport.find()
+    @flight = Flight.find(@booking.flight_id)
+
+    @booking.origin = Airport.find(@flight.departure_airport_id).name_code
+    @booking.destination = Airport.find(@flight.arrival_airport_id).name_code
+    @booking.duration = @flight.duration
 
     if @booking.save
       redirect_to booking_path(@booking)

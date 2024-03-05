@@ -8,6 +8,8 @@ class PassengerMailer < ApplicationMailer
   #
   def confirmation_email
     @passenger = params[:passenger]
+    @booking = params[:booking]
+
     @url = "http://prueba.com/"
 
     mail(to: @passenger.email)

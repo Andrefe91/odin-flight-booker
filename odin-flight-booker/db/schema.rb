@@ -19,11 +19,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_04_224538) do
 
   create_table "bookings", force: :cascade do |t|
     t.integer "flight_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "origin"
     t.string "destination"
     t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_bookings_on_flight_id"
   end
 
