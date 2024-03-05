@@ -129,6 +129,10 @@ GEM
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
     language_server-protocol (3.17.0.3)
+    launchy (2.5.2)
+      addressable (~> 2.8)
+    letter_opener (1.9.0)
+      launchy (>= 2.2, < 3)
     loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -327,8 +331,10 @@ DEPENDENCIES
   debug
   importmap-rails
   jbuilder
+  letter_opener
   puma (>= 5.0)
   rails (~> 7.1.3)
+  ruby-lsp (~> 0.14.1)
   ruby-lsp-rails (~> 0.3.0)
   selenium-webdriver
   solargraph (~> 0.50.0)

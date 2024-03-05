@@ -19,15 +19,15 @@
 
 <div>
     <p>
-        <strong>From Airport:</strong> <%= Airport.find(@flight.departure_airport_id).name_code %>
+        <strong>From Airport:</strong> <%= @booking.origin %>
     </p>
 
     <p>
-        <strong>To Airport:</strong> <%= Airport.find(@flight.arrival_airport_id).name_code %>
+        <strong>To Airport:</strong> <%= @booking.destination %>
     </p>
 
     <p>
-        <strong>Flight Duration:</strong> <%= @flight.duration %> min
+        <strong>Flight Duration:</strong> <%= @booking.duration %> min
     </p>
 </div>
 

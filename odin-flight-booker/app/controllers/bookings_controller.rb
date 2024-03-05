@@ -29,7 +29,9 @@ class BookingsController < ApplicationController
     @booking.destination = Airport.find(@flight.arrival_airport_id).name_code
     @booking.duration = @flight.duration
 
+
     if @booking.save
+      send_booking_email
       redirect_to booking_path(@booking)
     else
       flash.now[:notice] = "Error creating booking"
@@ -38,6 +40,12 @@ class BookingsController < ApplicationController
 
 
   private
+
+  def send_booking_email
+    @booking.passengers.each do |passenger|
+      PassengerMailer.with(passenger: passenger, booking: @booking).confirmation_email.deliver_now
+    end
+  end
 
   def set_passengers_number
     @passengers_number = params[:passengers_number]

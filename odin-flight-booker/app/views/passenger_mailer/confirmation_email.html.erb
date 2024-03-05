@@ -4,7 +4,7 @@
   <p>Thank you for your trust in our ficticious airline. The details of your booking are presented below:</p>
 
   <div>
-    <h3>General information:</h3>
+    <h2>General information:</h2>
 
     <p>
         <strong>Booking number:</strong> <%= @booking.id %>
@@ -19,7 +19,32 @@
     </p>
   </div>
 
-  
+  <div>
+    <h2>Flight Information:</h2>
 
+    <p>
+        <strong>From Airport:</strong> <%= @booking.origin %>
+    </p>
 
+    <p>
+        <strong>To Airport:</strong> <%= @booking.destination %>
+    </p>
+
+    <p>
+        <strong>Flight Duration:</strong> <%= @booking.duration %> min
+    </p>
+  </div>
+
+  <div>
+    <h2>Passenger information:</h2>
+
+    <p>
+      <strong>Name:</strong> <%= @passenger.name %>
+    </p>
+
+    <p>
+      <strong>email:</strong> <%= @passenger.email %>
+    </p>
+  </div>
 </div>
+

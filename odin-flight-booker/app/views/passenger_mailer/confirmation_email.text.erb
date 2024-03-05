@@ -1,3 +1,19 @@
-Passenger#confirmation_email
+Booking Confirmed!
 
-<%= @greeting %>, find me in app/views/passenger_mailer/confirmation_email.text.erb
+Thank you for your trust in our ficticious airline. The details of your booking are presented below:
+
+General information:
+Booking number: <%= @booking.id %>
+Flight number: <%= @booking.flight_id %>
+Number of Passengers: <%= @booking.passengers.count %>
+
+
+Flight Information:
+From Airport: <%= @booking.origin %>
+To Airport: <%= @booking.destination %>
+Flight Duration: <%= @booking.duration %> min
+
+Passenger information:
+Name: <%= @passenger.name %>
+email: <%= @passenger.email %>
+
